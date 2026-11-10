@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.artifacts/
+.test-artifacts/
+coverage/
+examples/generated/
+*.log

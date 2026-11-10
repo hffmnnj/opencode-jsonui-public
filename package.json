@@ -1,0 +1,38 @@
+{
+  "name": "opencode-jsonui",
+  "version": "0.1.0",
+  "description": "Native OpenCode V2 visual reports with Vercel json-render",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "packageManager": "bun@1.4.2",
+  "engines": { "bun": ">=1.4.2" },
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "bun test tests/unit tests/integration",
+    "check": "bun run typecheck && bun run test",
+    "test:host": "bun test tests/host/host.test.ts",
+    "test:gallery": "bun test tests/gallery.test.ts",
+    "examples": "bun scripts/examples.ts"
+  },
+  "dependencies": {
+    "@json-render/core": "0.21.0",
+    "@json-render/image": "0.21.0",
+    "@opencode/plugin": "2.0.18",
+    "@resvg/resvg-js": "2.6.2",
+    "echarts": "6.1.0",
+    "fontkit": "2.0.4",
+    "react": "19.2.7",
+    "sharp": "0.35.4",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@opencode/sdk": "2.0.18",
+    "@types/bun": "1.3.5",
+    "@types/fontkit": "2.0.9",
+    "@types/node": "22.13.9",
+    "@types/react": "19.2.14",
+    "typescript": "5.9.3"
+  }
+}
