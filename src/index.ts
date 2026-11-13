@@ -103,4 +103,4 @@ export async function registerJsonui(ctx: Plugin.Context, rawOptions: unknown = 
   return async () => { shutdown.abort(); await service.close(); };
 }
 
-export default Plugin.define({ id: "jsonui", async setup(ctx) { return await registerJsonui(ctx, ctx.options); } });
+export default Plugin.define({ id: "hffmnnj.jsonui", async setup(ctx) { return await registerJsonui(ctx, ctx.options); } });
