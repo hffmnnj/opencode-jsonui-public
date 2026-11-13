@@ -5,10 +5,9 @@ OpenCode 2.0.18 and Bun 1.4.2. Desktop/web is the primary delivery surface.
 
 ## Boundaries
 
-- This is a new package. The prior `/home/example/Documents/prior-renderer`
-  is read-only inspiration, not a dependency or a migration target.
-- Do not modify unrelated projects, the old renderer, shared OpenCode configuration, or the
-  running service during package development. The coordinator owns installation.
+- The prior renderer is read-only inspiration, not a dependency or a migration target.
+- Do not modify unrelated projects, the old renderer, shared OpenCode configuration,
+  or the running service during package development. The coordinator owns installation.
 - No V1 adapter, MCP server, deployment, paid inference, or external data service.
 - Preserve concurrent changes. Do not commit, reset, clean, stash, or recursively
   delete files. Use the patch tool for source edits.
@@ -16,8 +15,8 @@ OpenCode 2.0.18 and Bun 1.4.2. Desktop/web is the primary delivery surface.
 
 ## Architecture
 
-- Use `@opencode/plugin` 2.0.18 native tools and lifecycle; plain `opencode` on this
-  machine is V1. The V2 executable is `/home/example/.local/bin/opencodev2`.
+- Use `@opencode/plugin` 2.0.18 native tools and lifecycle. Verify that any host
+  used for testing is V2 rather than V1.
 - Use actual `@json-render/core` and `@json-render/image` 0.21.0 catalog/registry
   and rendering APIs. Do not recreate a giant renderer or patch library internals.
 - One chart engine: Apache ECharts 6.1.0 SVG SSR. Compose chart layers with Vercel's
@@ -68,9 +67,9 @@ OpenCode 2.0.18 and Bun 1.4.2. Desktop/web is the primary delivery surface.
 - Use real installed json-render/ECharts/resvg adapters. Test numerical cases,
   empty/missing/negative data, long labels, invalid references, resource limits,
   cancellation, permissions, artifact isolation, and native media persistence.
-- Host tests use `@opencode/sdk` 2.0.18, isolated HOME/XDG/config/database under
-  `/var/tmp/example/opencode`, and a deterministic loopback provider, not real OAuth
-  or paid inference. the unrelated project's `tests/host` provide read-only integration examples.
+- Host tests use `@opencode/sdk` 2.0.18, isolated HOME/XDG/config/database in a
+  temporary directory, and a deterministic loopback provider, not real OAuth or
+  paid inference.
 - Provide `bun run check`, `bun run test:host`, `bun run test:gallery`, and
   `bun run examples` scripts. Inspect generated images before claiming polish.
 - Report commands actually run, concrete results, and any unverified behavior.
