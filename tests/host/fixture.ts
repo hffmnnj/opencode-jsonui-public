@@ -1,12 +1,13 @@
 import assert from "node:assert/strict";
 import { mkdir, readdir } from "node:fs/promises";
-import { join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 import { registerJsonui } from "../../src/index.ts";
 
 const root = process.argv[2]!;
-assert(root.startsWith("/var/tmp/example/opencode/jsonui-host-") && process.env.HOME === join(root, "home"));
+const temporary = process.argv[3]!;
+assert(root === resolve(root) && dirname(root) === resolve(temporary) && root.startsWith(join(temporary, "opencode-jsonui-host-")) && process.env.TMPDIR === root && process.env.HOME === join(root, "home"));
 const directory = join(root, "workspace");
 await mkdir(directory, { recursive: true });
 let step = 0;

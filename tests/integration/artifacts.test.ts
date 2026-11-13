@@ -1,12 +1,13 @@
 import { expect, test } from "bun:test";
 import { mkdtemp, readFile, readdir, mkdir, symlink, stat } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { ArtifactStore } from "../../src/artifacts/store.ts";
 import { renderReport } from "../../src/render/engine.ts";
 import { report } from "../../examples/catalog.ts";
 
 test("artifacts preserve exact bytes, isolate sessions and never overwrite", async () => {
-  const root = await mkdtemp("/var/tmp/example/opencode/jsonui-artifacts-");
+  const root = await mkdtemp(join(tmpdir(), "jsonui-artifacts-"));
   const rendered = await renderReport({ spec: report("Persisted evidence", [{ type: "Text", props: { text: "An explicit observation." } }]) });
   const store = new ArtifactStore(root);
   const signal = new AbortController().signal;
@@ -21,7 +22,7 @@ test("artifacts preserve exact bytes, isolate sessions and never overwrite", asy
 });
 
 test("concurrent publications cannot exceed a session quota or overwrite its first artifact", async () => {
-  const root = await mkdtemp("/var/tmp/example/opencode/jsonui-quota-");
+  const root = await mkdtemp(join(tmpdir(), "jsonui-quota-"));
   const rendered = await renderReport({ spec: report("Quota", [{ type: "Text", props: { text: "Keep this evidence" } }]) });
   const stores = [new ArtifactStore(root, 1), new ArtifactStore(root, 1)];
   const results = await Promise.allSettled(stores.map(store => store.save("same-session", rendered, new AbortController().signal)));
@@ -33,7 +34,7 @@ test("concurrent publications cannot exceed a session quota or overwrite its fir
   expect(names.some(name => name.includes(".pending-"))).toBe(false);
 });
 test("cancellation publishes nothing and symlink output roots cannot redirect writes", async () => {
-  const root = await mkdtemp("/var/tmp/example/opencode/jsonui-boundaries-");
+  const root = await mkdtemp(join(tmpdir(), "jsonui-boundaries-"));
   const rendered = await renderReport({ spec: report("Evidence", [{ type: "Text", props: { text: "A value" } }]) });
   const controller = new AbortController(); controller.abort();
   await expect(new ArtifactStore(join(root, "cancelled")).save("ses_a", rendered, controller.signal)).rejects.toThrow();
