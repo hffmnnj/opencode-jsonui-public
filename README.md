@@ -1,12 +1,12 @@
+<p align="center">
+  <img src="https://unpkg.com/hffmnnj.jsonui/assets/banner.png" alt="JSONUI: visual reports for OpenCode" width="100%">
+</p>
+
 # JSONUI
 
 Native visual reports for OpenCode V2: charts, metrics, tables, diagrams, and
 multi-page image reports. Every render returns real PNG attachments alongside
 full-resolution files on disk. Rendering is local and offline.
-
-<img src="https://unpkg.com/hffmnnj.jsonui/assets/jsonui-example.png" alt="A JSONUI dashboard with metrics, a revenue chart, and a service reliability table using synthetic data" width="640">
-
-*A dashboard rendered by JSONUI with synthetic data.*
 
 Built with Vercel json-render 0.21.0, Apache ECharts 6.1.0, and resvg 2.6.2.
 Verified against OpenCode 2.0.18 and Bun 1.4.2. No MCP server, V1 adapter, paid
@@ -68,6 +68,10 @@ From Code Mode:
 ```ts
 return await tools.jsonui.render({ example: "dashboard", theme: "dark" });
 ```
+
+<img src="https://unpkg.com/hffmnnj.jsonui/assets/jsonui-example.png" alt="A JSONUI dashboard with metrics, a revenue chart, and a service reliability table using synthetic data" width="480">
+
+*A dashboard rendered by JSONUI with synthetic data.*
 
 After rendering, present the image and explain it briefly. Native file parts
 already carry PNG bytes. If the desktop bridge is connected, call

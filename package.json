@@ -1,6 +1,6 @@
 {
   "name": "hffmnnj.jsonui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Native OpenCode V2 visual reports with Vercel json-render",
   "type": "module",
   "license": "MIT",
@@ -20,6 +20,7 @@
     "examples/catalog.ts",
     "skills",
     "assets/fonts",
+    "assets/banner.png",
     "assets/jsonui-example.png",
     "THIRD_PARTY_NOTICES.md",
     "LICENSE"
