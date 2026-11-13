@@ -5,7 +5,7 @@
 OpenCode 2.0.18 provides `Plugin.define`, native tool registration, lifecycle
 cleanup, permissions, progress, and skill registration. These are a better fit
 than starting a separate JSON-RPC/MCP process for a local renderer. The package
-does not import or modify the earlier `prior-renderer` project.
+does not import or modify the earlier renderer.
 
 The official sources used for API research were:
 
