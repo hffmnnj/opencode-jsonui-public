@@ -1,13 +1,30 @@
 {
-  "name": "opencode-jsonui",
-  "version": "0.1.0",
+  "name": "hffmnnj.jsonui",
+  "version": "0.1.1",
   "description": "Native OpenCode V2 visual reports with Vercel json-render",
   "type": "module",
-  "private": true,
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hffmnnj/opencode-jsonui.git"
+  },
+  "homepage": "https://github.com/hffmnnj/opencode-jsonui#readme",
+  "bugs": { "url": "https://github.com/hffmnnj/opencode-jsonui/issues" },
+  "publishConfig": { "access": "public" },
   "packageManager": "bun@1.4.2",
   "engines": { "bun": ">=1.4.2" },
   "exports": { ".": "./src/index.ts" },
+  "files": [
+    "index.ts",
+    "src",
+    "examples/catalog.ts",
+    "skills",
+    "assets/fonts",
+    "assets/banner.png",
+    "assets/jsonui-example.png",
+    "THIRD_PARTY_NOTICES.md",
+    "LICENSE"
+  ],
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "bun test tests/unit tests/integration",
